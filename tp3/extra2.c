@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include "estadisticas.h"
 
+#define CENSO "censo.csv"
+#define RANGOS "rango.dat"
+
 #define OBRERO 1
 #define APRENDIZ 2
 #define GUERRERO 3
@@ -18,27 +21,12 @@
 #define APRENDICES_MISIONES 10
 
 
+
+
 enano_t leer_enano(FILE * lista_enanos, int* cant_enanos_leidos){
   enano_t enanos;
   *cant_enanos_leidos = fscanf(lista_enanos, "%[^;];%i;%i;%i\n", enanos.nombre, &enanos.edad, &enanos.cantidad_misiones, &enanos.id_rango);
   return enanos;
-}
-
-
-int elegir_enanos(int cant_guerro, int cant_lider, int cant_gral, ){
-  FILE * censo;
-  FILE * mision;
-  enano_t elegido;
-  size_t enanos_elegidos;
-
-  censo = fopen(CENSO, "r");
-  if(censo == NULL){
-    printf("No se ha podido abrir el archivo\n");
-    return -1;
-  }
-
-  mision = fopen(argv[])
-  if(mision)
 }
 
 
@@ -52,7 +40,6 @@ void promocion(enano_t *enano){
   }
 
 }
-
 
 int promover_enanos(){
   enano_t leido;
@@ -118,10 +105,19 @@ void enanos_de_rango(){
   while(cant_enanos_leidos != EOF){
     id_de_rango = leido.id_rango;
     imprimir_nombre_rango(id_de_rango);
+    if(id_de_rango != leido.id_rango){
+      leido = leer_enano(lista_enanos, &cant_enanos_leidos);
+    }
     while(id_de_rango == leido.id_rango && cant_enanos_leidos != EOF){
-      printf("   %s\n", leido.nombre);
+      printf("  %s\n", leido.nombre);
       leido = leer_enano(lista_enanos, &cant_enanos_leidos);
     }
   }
 fclose(lista_enanos);
+}
+
+int main(int argc, char const *argv[]) {
+  promover_enanos();
+  enanos_de_rango();
+  return 0;
 }

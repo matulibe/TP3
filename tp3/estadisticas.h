@@ -6,11 +6,17 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define CENSO "censo.csv"
+#define RANGOS "rango.dat"
 
+#define OBRERO 1
+#define APRENDIZ 2
+#define GUERRERO 3
+#define LIDER 4
+#define GENERAL 5
 #define MAX_NOMBRE 50
 #define MAX_RANGO 50
 #define MAX_DESCRIPCION 200
-#define CENSO "censo.csv"
 
 
 typedef struct enano{

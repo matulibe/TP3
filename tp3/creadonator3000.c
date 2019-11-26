@@ -25,11 +25,11 @@ int escribir_archivo(){
     return -1;
   }
 
-  cant_leidos = fscanf(leido, "%i;%[^;];%[^;]\n", &rango.id, rango.nombre, rango.descripcion);
+  cant_leidos = fscanf(leido, "%i;%[^;];%[^\n]\n", &rango.id, rango.nombre, rango.descripcion);
 
   while(cant_leidos != EOF){
     chequear = fwrite(&rango, sizeof(rango_t), 1, archivo);
-    cant_leidos = fscanf(leido, "%i;%[^;];%[^;]\n", &rango.id, rango.nombre, rango.descripcion);
+    cant_leidos = fscanf(leido, "%i;%[^;];%[^\n]\n", &rango.id, rango.nombre, rango.descripcion);
     if(!chequear){
       printf("No se puede escribir el archivo\n");
       return -1;
@@ -42,6 +42,7 @@ int escribir_archivo(){
   fclose(archivo);
   return 1;
 }
+
 
 
 int main(){
