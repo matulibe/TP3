@@ -4,7 +4,7 @@
 #include "estadisticas.h"
 
 #define CENSO "censo.csv"
-
+#define MAX 1000
 #define RANGOS "rango.dat"
 #define ACTUALIZAR "actualizar_censo"
 #define PROMOVER "promover_enanos"
@@ -13,7 +13,9 @@
 
 
 int main(int argc, char const *argv[]) {
-  FILE * archivo = fopen(RANGOS, "r")
-  fclose(archivo);
+  char nombre[MAX];
+  strcpy(nombre, argv[1]);
+  strcat(nombre, ".dat");
+  printf("%s\n", nombre);
   return 0;
 }

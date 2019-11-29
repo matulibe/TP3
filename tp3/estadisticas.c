@@ -119,6 +119,8 @@ void enanos_de_rango(){
     id_de_rango = leido.id_rango;
     imprimir_nombre_rango(id_de_rango);
     while(id_de_rango == leido.id_rango && cant_enanos_leidos != EOF){
+      if(id_de_rango == OBRERO)´
+
       printf("   %s\n", leido.nombre);
       leido = leer_enano(lista_enanos, &cant_enanos_leidos);
     }
